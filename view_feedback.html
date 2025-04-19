@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Feedback</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        #feedback-list {
+            margin-top: 20px;
+        }
+        .feedback-item {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+        .feedback-item h3 {
+            margin-top: 0;
+            color: #4CAF50;
+        }
+        .feedback-meta {
+            font-size: 0.9em;
+            color: #666;
+            margin: 5px 0;
+        }
+        .feedback-content {
+            margin-top: 10px;
+        }
+        .home-link {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .no-feedback {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+            padding: 20px;
+        }
+        .error {
+            background-color: #ffebee;
+            border: 1px solid #ffcdd2;
+            color: #b71c1c;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Feedback Records</h1>
+        <div id="feedback-list">
+            <!-- Feedback items will be loaded here -->
+            <div class="no-feedback">Loading feedback...</div>
+        </div>
+        <a href="index.html" class="home-link">Back to Home</a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const feedbackList = document.getElementById('feedback-list');
+            
+            // Load feedback data
+            fetch('cgi-bin/c_program.cgi?action=list')
+                .then(response => response.text())
+                .then(text => {
+                    if (text.trim() === '') {
+                        return [];
+                    }
+                    
+                    try {
+                        let jsonText = text.trim();
+                                                
+                        if (jsonText === '{}') {
+                            return [];
+                        }
+                        
+                        return JSON.parse('[' + jsonText + ']');
+                    } catch (e) {
+                        throw new Error(`Failed to parse JSON: ${e.message}`);
+                    }
+                })
+                .then(data => {
+                    feedbackList.innerHTML = '';
+                    
+                    if (!data || data.length === 0) {
+                        feedbackList.innerHTML = '<div class="no-feedback">No feedback records found.</div>';
+                        return;
+                    }
+                    
+                    data.forEach(item => {
+                        const feedbackItem = document.createElement('div');
+                        feedbackItem.className = 'feedback-item';
+                        
+                        let typeLabel = item.type ? `<span>[${item.type}]</span> ` : '';
+                        let subject = item.subject || 'Feedback';
+                        
+                        feedbackItem.innerHTML = `
+                            <h3>${typeLabel}${subject}</h3>
+                            <div class="feedback-meta">
+                                <strong>From:</strong> ${item.name || 'Anonymous'} 
+                                ${item.branch ? `<strong>Branch:</strong> ${item.branch}` : ''}
+                                ${item.semester ? `<strong>Semester:</strong> ${item.semester}` : ''}
+                                ${item.department ? `<strong>Department:</strong> ${item.department}` : ''}
+                                ${item.date ? `<strong>Date:</strong> ${item.date}` : ''}
+                            </div>
+                            <div class="feedback-content">
+                                ${item.feedback || 'No content'}
+                            </div>
+                        `;
+                        
+                        feedbackList.appendChild(feedbackItem);
+                    });
+                })
+                .catch(error => {
+                    feedbackList.innerHTML = `
+                        <div class="error">
+                            <strong>Error loading feedback:</strong> ${error.message}
+                        </div>
+                        <div class="no-feedback">Please try again later or contact support.</div>
+                    `;
+                    console.error('Error loading feedback:', error);
+                });
+        });
+    </script>
+</body>
+</html>
