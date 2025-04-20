@@ -227,6 +227,12 @@
     </style>
 </head>
 <body>
+    <script>
+        // Check if user is logged in
+        if (!sessionStorage.getItem('isLoggedIn')) {
+            window.location.href = 'login.html';
+        }
+    </script>
     <div class="dashboard">
         <aside class="sidebar">
             <div class="logo">
