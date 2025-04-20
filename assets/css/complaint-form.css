@@ -1,0 +1,120 @@
+/* Shared styles for hostel.html and campus.html */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #ffffff;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Particle elements styling */
+.particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    background: linear-gradient(45deg, #ff1717, #a10000);
+    border-radius: 2px;
+    opacity: 0.4;
+    transform-origin: center;
+    transition: transform 0.3s ease-out;
+    will-change: transform;
+    animation: float 20s infinite linear;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(100vh) translateX(-10vw) rotate(0deg);
+    }
+    100% {
+        transform: translateY(-10vh) translateX(10vw) rotate(360deg);
+    }
+}
+
+/* Form styling */
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 1;
+    backdrop-filter: blur(5px);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+textarea {
+    height: 150px;
+}
+
+button {
+    background-color: #d50000;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #b00000;
+}
+
+.home-link {
+    display: block;
+    margin-top: 20px;
+    text-align: center;
+    text-decoration: none;
+    color: #d50000;
+    font-weight: 500;
+    padding: 10px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.home-link:hover {
+    color: #b00000;
+}
+
+.home-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background-color: #d50000;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.home-link:hover::after {
+    width: 90px;
+}

@@ -1,0 +1,239 @@
+/* Styles for view_feedback.html page */
+:root {
+    --sidebar-width: 250px;
+    --header-height: 60px;
+    --primary-color: #ff1744;
+    --hover-color: #d50000;
+    --background-color: #f5f5f5;
+    --text-color: #333;
+    --border-color: #e0e0e0;
+    --card-bg: #ffffff;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.dashboard {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: var(--sidebar-width);
+    background: var(--card-bg);
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    backdrop-filter: none;
+    position: fixed;
+    height: 100vh;
+    padding: 20px 0;
+}
+
+.logo {
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.logo h2 {
+    color: var(--text-color);
+}
+
+.nav-links {
+    padding: 20px 0;
+}
+
+.nav-link {
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.nav-link.active {
+    background: rgba(255, 23, 68, 0.1);
+    color: var(--primary-color);
+}
+
+.main-content {
+    margin-left: var(--sidebar-width);
+    flex: 1;
+}
+
+.header {
+    background: var(--card-bg);
+    backdrop-filter: none;
+    padding: 15px 30px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-bar {
+    padding: 8px 16px;
+    background: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    width: 300px;
+    color: var(--text-color);
+}
+
+.search-bar::placeholder {
+    color: #666;
+}
+
+.content {
+    padding: 30px;
+}
+
+.feedback-table {
+    width: 100%;
+    background: var(--card-bg);
+    backdrop-filter: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    border-collapse: collapse;
+}
+
+.feedback-table th,
+.feedback-table td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.feedback-table th {
+    background: #f8f9fa;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.feedback-table td {
+    color: var(--text-color);
+}
+
+.feedback-table tr:hover {
+    background: #f8f9fa;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 8px;
+}
+
+.status-dot.solved {
+    background: #4caf50;
+}
+
+.status-dot.pending {
+    background: #ff9800;
+}
+
+.expanded-row {
+    background: #f8f9fa;
+    display: none;
+    padding: 20px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.action-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.solve-btn {
+    background: #4caf50;
+    color: white;
+}
+
+.pending-btn {
+    background: #ff9800;
+    color: white;
+}
+
+.delete-btn {
+    background: #f44336;
+    color: white;
+}
+
+.feedback-row {
+    cursor: pointer;
+}
+
+.feedback-row:hover {
+    background: #f1f1f1;
+}
+
+.filter-container {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.filter-select {
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background: var(--card-bg);
+    color: var(--text-color);
+    min-width: 150px;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+        z-index: 1000;
+    }
+    .main-content {
+        margin-left: 0;
+    }
+}
+
+.truncate {
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.expanded-content p {
+    white-space: pre-wrap;
+    line-height: 1.5;
+}
+
+/* Add styles for logout button */
+.logout-btn {
+    display: block;
+    width: 90%;
+    margin: 20px auto 0;
+    padding: 10px 15px;
+    background-color: #ff5252;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.logout-btn:hover {
+    background-color: #ff1a1a;
+}

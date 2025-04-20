@@ -1,52 +1,22 @@
 [
   {
-    "type": "hostel",
-    "name": "afaf",
-    "branch": "afaf",
-    "semester": "4",
-    "department": "fafaf",
-    "subject": "ggsgs",
-    "feedback": "gsgsgsg",
-    "date": "2025-04-20 01:29:50"
-  },
-  {
     "type": "campus",
-    "name": "ssgsh",
-    "branch": "hshsh",
-    "semester": "4",
-    "department": "hshshsh",
-    "subject": "hshshhsh",
-    "feedback": "fafafaf",
-    "date": "2025-04-20 01:30:00"
-  },
-  {
-    "type": "campus",
-    "name": "wqd",
-    "branch": "qrw",
-    "semester": "2",
-    "department": "qwrd",
-    "subject": "qwarf",
-    "feedback": "frqw",
-    "date": "2025-04-20 01:46:04"
+    "name": "first",
+    "branch": "some branch",
+    "semester": "3",
+    "department": "csai",
+    "subject": "water purification",
+    "feedback": "pegion diong stuff",
+    "date": "2025-04-21 00:45:39"
   },
   {
     "type": "hostel",
-    "name": "kaj",
-    "branch": "awj",
-    "semester": "2",
-    "department": "kjawb",
-    "subject": "lkaqianwqklanq",
-    "feedback": "alknlknaq",
-    "date": "2025-04-20 14:34:46"
-  },
-  {
-    "type": "campus",
-    "name": "SAM SUNNY",
-    "branch": "CSE AI",
-    "semester": "2",
-    "department": "AI",
-    "subject": "Regarding Faculty",
-    "feedback": "the faculty of this this and this subject shbhsubdsiuvfbhbd bbvt hbrg gvhjr goh vrt vgh gtrvh rtg vcr vhe f eh cgf vcef cgv efh  dh cgduhhscjsauybrhf hre hfc reh h vrh vfdh osjf hv er h frvh uerhvh dh chdshb h ewdh hs vs",
-    "date": "2025-04-20 15:47:13"
+    "name": "hostel ",
+    "branch": "hostel stuff",
+    "semester": "4",
+    "department": "cs b",
+    "subject": "food",
+    "feedback": "bad food",
+    "date": "2025-04-21 00:46:07"
   }
 ]
